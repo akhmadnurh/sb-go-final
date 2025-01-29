@@ -1,6 +1,7 @@
 package middlewares
 
 import (
+	"OneTix/utils"
 	"fmt"
 	"net/http"
 
@@ -42,7 +43,7 @@ func Validator[T any](source string) gin.HandlerFunc {
 func generateValidationErrors(err error) []string {
 	var validationErrors []string
 	for _, err := range err.(validator.ValidationErrors) {
-		message := fmt.Sprintf("Field '%s' is %s", err.Field(), err.ActualTag())
+		message := fmt.Sprintf("Field '%s' is %s", utils.ToSnakeCase(err.Field()), err.ActualTag())
 
 		if err.Param() != "" {
 			message += fmt.Sprintf("='%s'", err.Param())

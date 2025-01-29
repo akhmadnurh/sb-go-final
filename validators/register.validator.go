@@ -5,3 +5,9 @@ type RegisterCustomerBody struct {
 	Email    string `json:"email" validate:"required,email,max=128"`
 	Password string `json:"password" validate:"required,min=8,max=128"`
 }
+
+type RegisterOrganizerBody struct {
+	RegisterCustomerBody
+	CompanyName string `json:"company_name" validate:"required,min=1,max=128"`
+	ContactInfo string `json:"contact_info" validate:"required,min=1,max=16"`
+}
