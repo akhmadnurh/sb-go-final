@@ -20,5 +20,4 @@ type TrsTicket struct {
 
 func (TrsTicket) TableName() string {
 	return "trs_ticket"
-
 }
