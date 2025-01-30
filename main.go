@@ -2,6 +2,7 @@ package main
 
 import (
 	"OneTix/configs"
+	"OneTix/routes"
 	"fmt"
 	"log"
 
@@ -17,6 +18,8 @@ func main() {
 	log.Printf("Loaded config: %+v\n", env)
 
 	router := gin.Default()
+
+	routes.AuthRoutes(router)
 
 	router.Run(fmt.Sprintf(":%s", env.AppPort))
 
