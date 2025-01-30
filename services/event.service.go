@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 )
 
 func FindEvents(query validators.FindEventsQuery) (status int, response gin.H) {
@@ -67,7 +68,7 @@ func DeleteEvent(query validators.DeleteEventQuery) (status int, response gin.H)
 	var event models.MstEvent
 
 	if err := configs.DB.Where("id = ? and deleted_at is null", query.ID).First(&event).Error; err != nil {
-		if err.Error() == "record not found" {
+		if err == gorm.ErrRecordNotFound {
 			return http.StatusNotFound, utils.GenerateResponse(false, "Event not found")
 		}
 
@@ -85,7 +86,7 @@ func UpdateEvent(query validators.UpdateEventQuery, body validators.UpdateEventB
 	var event models.MstEvent
 
 	if err := configs.DB.Where("id = ? and deleted_at is null", query.ID).First(&event).Error; err != nil {
-		if err.Error() == "record not found" {
+		if err == gorm.ErrRecordNotFound {
 			return http.StatusNotFound, utils.GenerateResponse(false, "Event not found")
 		}
 
