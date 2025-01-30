@@ -20,6 +20,7 @@ func main() {
 	router := gin.Default()
 
 	routes.AuthRoutes(router)
+	routes.EventRoutes(router)
 
 	router.Run(fmt.Sprintf(":%s", env.AppPort))
 
