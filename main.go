@@ -21,6 +21,7 @@ func main() {
 
 	routes.AuthRoutes(router)
 	routes.EventRoutes(router)
+	routes.ProfileRoutes(router)
 
 	router.Run(fmt.Sprintf(":%s", env.AppPort))
 
