@@ -26,7 +26,7 @@ func Register(body validators.RegisterCustomerBody) (status int, response gin.H)
 		Name:     body.Name,
 		Email:    body.Email,
 		Password: body.Password,
-		Role:     constants.USER,
+		Role:     constants.CUSTOMER,
 	}
 
 	if err := configs.DB.Create(&newUser).Error; err != nil {

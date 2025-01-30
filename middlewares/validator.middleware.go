@@ -55,7 +55,7 @@ func generateValidationErrors(err error) []string {
 	return validationErrors
 }
 
-func handleRequestBody(c *gin.Context, data any, isSuccess *bool) {
+func handleRequestBody[T any](c *gin.Context, data T, isSuccess *bool) {
 	if c.Request.ContentLength == 0 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Request body is empty"})
 		c.Abort()
@@ -73,7 +73,7 @@ func handleRequestBody(c *gin.Context, data any, isSuccess *bool) {
 
 }
 
-func handleRequestQuery(c *gin.Context, data any, isSuccess *bool) {
+func handleRequestQuery[T any](c *gin.Context, data *T, isSuccess *bool) {
 	if err := c.ShouldBindQuery(&data); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"Request query parameters validation error": err.Error()})
 		c.Abort()
@@ -83,7 +83,7 @@ func handleRequestQuery(c *gin.Context, data any, isSuccess *bool) {
 
 }
 
-func handleRequestParams(c *gin.Context, data any, isSuccess *bool) {
+func handleRequestParams[T any](c *gin.Context, data T, isSuccess *bool) {
 	if err := c.ShouldBindUri(&data); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Request parameters error", "details": err.Error()})
 		c.Abort()

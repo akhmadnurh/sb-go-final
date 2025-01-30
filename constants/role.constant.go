@@ -1,6 +1,6 @@
 package constants
 
 const (
-	USER      = "user"
+	CUSTOMER  = "customer"
 	ORGANIZER = "organizer"
 )
