@@ -9,4 +9,5 @@ type Env struct {
 	DBPass    string
 	DBName    string
 	JWTSecret string
+	DocsURL   string
 }
