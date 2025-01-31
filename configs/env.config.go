@@ -22,5 +22,6 @@ func LoadEnv() *structs.Env {
 		DBPass:    os.Getenv("DB_PASS"),
 		DBName:    os.Getenv("DB_NAME"),
 		JWTSecret: os.Getenv("JWT_SECRET"),
+		DocsURL:   os.Getenv("DOCS_URL"),
 	}
 }
