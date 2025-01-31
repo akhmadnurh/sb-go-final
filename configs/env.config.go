@@ -18,6 +18,6 @@ func LoadEnv() *structs.Env {
 		AppPort:   os.Getenv("APP_PORT"),
 		JWTSecret: os.Getenv("JWT_SECRET"),
 		DocsURL:   os.Getenv("DOCS_URL"),
-		DBURL:     os.Getenv("DB_URL"),
+		DBURL:     os.Getenv("DATABASE_URL"),
 	}
 }
