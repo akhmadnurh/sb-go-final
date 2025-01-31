@@ -24,3 +24,5 @@ Features:
 
 
 Documentation URL: https://onetix.monopedia.my.id/docs
+
+ERD: https://drive.google.com/file/d/1YYyNTn0qL7mmBEfNfx87pZWdNtUs0Y_f/view?usp=sharing
